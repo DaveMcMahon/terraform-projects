@@ -1,5 +1,5 @@
 resource "aws_instance" "dmc-ec2-example" {
-  ami = var.AMIS[var.REGION]
+  ami = var.AMIS[var.AWS_REGION]
   instance_type = var.INSTANCE_TYPE
 
   subnet_id = aws_subnet.dmc-public-1.id
