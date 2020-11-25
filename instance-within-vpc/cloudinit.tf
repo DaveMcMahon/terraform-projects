@@ -4,6 +4,9 @@ data "template_file" "init-script" {
 
 data "template_file" "shell-script" {
   template = file("scripts/volumes.sh")
+  vars = {
+    DEVICE = var.DEVICE_NAME
+  }
 }
 
 data "template_cloudinit_config" "cloudinit-dmc" {
