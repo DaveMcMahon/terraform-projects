@@ -4,7 +4,8 @@ resource "aws_instance" "dmc-ec2-example" {
 
   subnet_id = aws_subnet.dmc-public-1.id
   vpc_security_group_ids = [aws_security_group.allow-ssh.id]
-  key_name = 
+  key_name = aws_key_pair.terrakeys.key_name
+  user_data = data.template_cloudinit_config.cloudinit-dmc.rendered
 
   resource "aws_ebs_volume" "ebs-dmc-volume" {
     availability_zone = "eu-west-1a"
