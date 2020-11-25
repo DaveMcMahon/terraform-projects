@@ -11,6 +11,10 @@ variable "AMIS" {
   }
 }
 
+variable "INSTANCE_TYPE" {
+  default = "t2.micro"
+}
+
 variable "AWS_REGION" {
   default = "eu-west-1"
 }
