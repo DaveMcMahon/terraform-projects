@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-dmc-bucket"
+    bucket = "terraform-bucket-dmc"
     key = "terraform/myexamples"
   }
 }
