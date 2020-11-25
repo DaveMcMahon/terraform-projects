@@ -23,4 +23,7 @@ resource "aws_volume_attachment" "ebs-dmc-volume-attachment" {
   instance_id = aws_instance.dmc-ec2-example.id
   skip_destroy = true
 }
-  
+
+output "ip" {
+  value = aws_instance.dmc-ec2-example.public_ip
+}
