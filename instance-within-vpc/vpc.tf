@@ -61,7 +61,7 @@ resource "aws_route_table" "dmc-public" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.id
+    gateway_id = aws_internet_gateway.dmc-gw.id
   }
 
   tags = {
