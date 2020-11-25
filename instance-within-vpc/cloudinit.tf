@@ -18,6 +18,6 @@ data "template_cloudinit_config" "cloudinit-dmc" {
 
   part {
     content_type = "text/x-shellscript"
-    content = data.template_file.shell_script.rendered
+    content = data.template_file.shell-script.rendered
   }
 }

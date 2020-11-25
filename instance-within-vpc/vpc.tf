@@ -10,7 +10,7 @@ resource "aws_vpc" "dmc-vpc" {
 }
 
 resource "aws_subnet" "dmc-public-1" {
-  vpc_id = aws_vpc.dmc-vpc.vpc_id
+  vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.1.0/24"
   availability_zone = "eu-west-1a"
   map_public_ip_on_launch = "true"
@@ -20,7 +20,7 @@ resource "aws_subnet" "dmc-public-1" {
 }
 
 resource "aws_subnet" "dmc-public-2" {
-  vpc_id = aws_vpc.dmc-vpc.vpc_id
+  vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.2.0/24"
   availability_zone = "eu-west-1b"
   map_public_ip_on_launch = "true"
@@ -30,7 +30,7 @@ resource "aws_subnet" "dmc-public-2" {
 }
 
 resource "aws_subnet" "dmc-private-1" {
-  vpc_id = aws_vpc.dmc-vpc.vpc_id
+  vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.3.0/24"
   availability_zone = "eu-west-1a"
   map_public_ip_on_launch = "false"
@@ -40,7 +40,7 @@ resource "aws_subnet" "dmc-private-1" {
 }
 
 resource "aws_subnet" "dmc-private-2" {
-  vpc_id = aws_vpc.dmc-vpc.vpc_id
+  vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.4.0/24"
   availability_zone = "eu-west-1b"
   map_public_ip_on_launch = "false"
