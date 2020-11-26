@@ -1,0 +1,11 @@
+Terraform project which creates two Public subnets and two Private subnets within a VPC and launches an ec2 instance with an EBS volume attached, formatted and mounted.
+
+Within the public subnets, I launch an ec2 instance which picks up a public facing IP via the map_public_ip_on_launch field.
+The VPC has an internet gateway configured for access to the internet.
+A route table exists to point all internal traffic to the internet gateway, and a route table association exists for the public subnets. Could possibly create a route table entry and association for the private subnets and point them at a NAT gateway.
+The instance also has an EBS volume created within the same AZ, and attached to the above instance.
+The EBS volume is formatted and mounted to /data with a record inside the fstab config file.
+The private subnets do not get a public IP and have no access to the outside world. Could possibly create a NAT gateway and point it towards the main public Internet gateway, or via a central update server.
+The instance has user data passed configured via a cloudinit template file, rendering two scripts i.e. shell script and init.cfg, the former for EBS volume admin and the latter for OS update, upgrade and software download.
+Ignore files are in place for the terraform state files, which uses S3 as the backend anyway but is good practice.
+Ignore file in place for terraform.tfvars which holds the aws access/secret keys.
