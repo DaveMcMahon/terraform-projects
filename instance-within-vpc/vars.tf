@@ -34,3 +34,9 @@ variable "PATH_TO_PRIVATE_KEY" {
 variable "DEVICE_NAME" {
   default = "/dev/xvdh"
 }
+
+variable "RDS_USERNAME" {
+}
+
+variable "RDS_PASSWORD"{
+}
