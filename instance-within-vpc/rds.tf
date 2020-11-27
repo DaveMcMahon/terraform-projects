@@ -30,7 +30,7 @@ resource "aws_db_instance" "mariadb" {
   vpc_security_group_ids = [aws_security_group.allow-mariadb.id]
   storage_type = "gp2"
   backup_retention_period = 30
-  availability_zone = aws_subnet.dmc-private1.availability_zone
+  availability_zone = aws_subnet.dmc-private-1.availability_zone
   skip_final_snapshot = true
 
   tags = {
