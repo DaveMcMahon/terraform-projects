@@ -21,3 +21,28 @@ resource "aws_security_group" "allow-ssh" {
     Name = "allow-ssh"
   }
 }
+
+resource "aws_security_group" "allow-mariadb" {
+  vpc_id = aws_vpc.dmc-vpc.id
+  name = "allow-mariadb"
+  description = "security group to allow 3306 traffic"
+
+  ingress {
+    from_port = 3306
+    to_port = 3306
+    protocol = "tcp"
+    cidr_blocks = [aws_security_group.allow-ssh.id]
+  }
+
+  egress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+    self = true
+  }
+
+  tags = {
+    Name = "allow-mariadb"
+  }
+}
