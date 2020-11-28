@@ -12,7 +12,7 @@ resource "aws_vpc" "dmc-vpc" {
 resource "aws_subnet" "dmc-public-1" {
   vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = "${AWS_REGION}a"
+  availability_zone = "${var.AWS_REGION}a"
   map_public_ip_on_launch = "true"
   tags = {
     Name = "dmc-public-1"
@@ -22,7 +22,7 @@ resource "aws_subnet" "dmc-public-1" {
 resource "aws_subnet" "dmc-public-2" {
   vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.2.0/24"
-  availability_zone = "${AWS_REGION}b"
+  availability_zone = "${var.AWS_REGION}b"
   map_public_ip_on_launch = "true"
   tags = {
     Name = "dmc-public-2"
@@ -32,7 +32,7 @@ resource "aws_subnet" "dmc-public-2" {
 resource "aws_subnet" "dmc-private-1" {
   vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.3.0/24"
-  availability_zone = "${AWS_REGION}a"
+  availability_zone = "${var.AWS_REGION}a"
   map_public_ip_on_launch = "false"
   tags = {
     Name = "dmc-private-1"
@@ -42,7 +42,7 @@ resource "aws_subnet" "dmc-private-1" {
 resource "aws_subnet" "dmc-private-2" {
   vpc_id = aws_vpc.dmc-vpc.id
   cidr_block = "10.0.4.0/24"
-  availability_zone = "${AWS_REGION}b"
+  availability_zone = "${var.AWS_REGION}b"
   map_public_ip_on_launch = "false"
   tags = {
     Name = "dmc-private-2"
