@@ -1,3 +1,4 @@
+=== DEV ===
 Terraform project which creates two Public subnets and two Private subnets within a VPC and launches an ec2 instance with an EBS volume attached, formatted and mounted.
 
 Within the public subnets, I launch an ec2 instance which picks up a public facing IP via the map_public_ip_on_launch field.
