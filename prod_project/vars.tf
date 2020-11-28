@@ -4,6 +4,10 @@ variable "AWS_ACCESS_KEY" {
 variable "AWS_SECRET_KEY" {
 }
 
+variable "ENV" {
+  default = "PROD"
+}
+
 variable "AMIS" {
   type = map(string)
   default = {

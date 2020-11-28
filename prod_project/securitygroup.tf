@@ -1,5 +1,5 @@
-resource "aws_security_group" "allow-ssh" {
-  name = "allow-ssh"
+resource "aws_security_group" "allow-ssh-dev" {
+  name = "allow-ssh-dev"
   description = "Allow SSH ingress"
   vpc_id = aws_vpc.dmc-vpc.id
 
@@ -22,27 +22,51 @@ resource "aws_security_group" "allow-ssh" {
   }
 }
 
-resource "aws_security_group" "allow-mariadb" {
+resource "aws_security_group" "allow-ssh-prod" {
+  name = "allow-ssh-prod"
+  description = "Allow SSH ingress"
   vpc_id = aws_vpc.dmc-vpc.id
-  name = "allow-mariadb"
-  description = "security group to allow 3306 traffic"
 
   ingress {
-    from_port = 3306
-    to_port = 3306
+    from_port = "22"
+    to_port = "22"
     protocol = "tcp"
-    security_groups = [aws_security_group.allow-ssh.id]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    from_port = 0
-    to_port = 0
+    from_port = "0"
+    to_port = "0"
     protocol = "-1"
     cidr_blocks = ["0.0.0.0/0"]
-    self = true
   }
 
   tags = {
-    Name = "allow-mariadb"
+    Name = "allow-ssh"
   }
 }
+
+# resource "aws_security_group" "allow-mariadb" {
+#   vpc_id = aws_vpc.dmc-vpc.id
+#   name = "allow-mariadb"
+#   description = "security group to allow 3306 traffic"
+
+#   ingress {
+#     from_port = 3306
+#     to_port = 3306
+#     protocol = "tcp"
+#     security_groups = [aws_security_group.allow-ssh.id]
+#   }
+
+#   egress {
+#     from_port = 0
+#     to_port = 0
+#     protocol = "-1"
+#     cidr_blocks = ["0.0.0.0/0"]
+#     self = true
+#   }
+
+#   tags = {
+#     Name = "allow-mariadb"
+#   }
+# }
